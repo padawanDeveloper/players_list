@@ -8,7 +8,7 @@ export default class App extends Component {
     return (
       <div className='ui three column centered grid'>
         <div className='column'>
-          
+          <h1>Hola mundo</h1>
         </div>
       </div>
     );
