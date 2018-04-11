@@ -10,3 +10,6 @@
 
 5. const ToggableForm = ({ visible }) -> toma el props que se le pasa desde App.
   * return visible && h1 ToggableForm h1 -> si es _true_ muestra el form. 
+
+6. export default (PlayerForm = () => ()) -> recive el return literalmente con los ()
+  * export default (PlayerForm = () => {}) -> hay que escribir el return en la funcion.
