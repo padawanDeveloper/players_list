@@ -2,6 +2,7 @@ import React from "react";
 import { PropTypes } from "prop-types";
 
 const ToggableForm = ({ visible }) => {
+	console.log(visible);
   return visible && <h1>ToggableForm</h1>;
 };
 

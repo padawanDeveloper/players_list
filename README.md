@@ -7,3 +7,6 @@
 
 4. this.setState({ formIsVisible: !this.state.formIsVisible }) -> cambia el valor del estado con el setState al contenido contrario 
   * onClick={this.toggleForm} -> el evento onClick activa la funcion toogleForm la cual hace el punto 4
+
+5. const ToggableForm = ({ visible }) -> toma el props que se le pasa desde App.
+  * return visible && h1 ToggableForm h1 -> si es _true_ muestra el form. 
