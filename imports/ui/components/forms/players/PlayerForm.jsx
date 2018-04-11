@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { PropTypes } from "prop-types";
 
 class PlayerForm extends Component {
   constructor(props) {
@@ -10,8 +11,10 @@ class PlayerForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log('click handleSubmit');
-    console.log(this.state.name + "VACIO");
+    console.log(this.state.name);
+    let player = { name: this.state.name };
+    this.props.submit(player);
+    this.setState({ name: "" });
   };
 
   handleChange = event => {
@@ -38,7 +41,7 @@ class PlayerForm extends Component {
             </div>
             <div className="input-field col s12">
               <button type="submit" className="waves-effect waves-light btn">
-                Agregar Amigo
+                Player
               </button>
             </div>
           </div>
@@ -46,6 +49,10 @@ class PlayerForm extends Component {
       </div>
     );
   }
-} 
+}
+
+PlayerForm.propTypes = {
+  submit: PropTypes.func.isRequired
+}; 
 
 export default PlayerForm;  

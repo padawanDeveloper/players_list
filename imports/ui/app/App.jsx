@@ -18,12 +18,18 @@ export default class App extends Component {
     console.log('click en togable');
   };
 
+  addPlayer = player => {
+    let { playersFromState } = this.state;
+    this.setState({ playersFromState: playersFromState.concat(player) });
+    console.log('click add');
+  };
+
   render() {
   	let { playersFromState, formIsVisible } = this.state;
     return (
     	<div>
         <PlayersList playersAsProps={playersFromState}/>
-        <TogglebleForm visible={formIsVisible} />
+        <TogglebleForm visible={formIsVisible} handleCreate={this.addPlayer}/>
         <a className="waves-effect waves-light btn" onClick={this.toggleForm}>
           Add Player
         </a>
