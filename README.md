@@ -29,3 +29,5 @@
 
 9. onChange={this.handleChange} -> activa la function handleChange.
   * this.setState({ name: event.target.value })-> la que se encarga de setear el name con el valor del metodo target.
+
+10. App envia la props con la funcion handleCreate a toggableForm, el cual envia un props "submit" con ese valor, el cual se lo pasa a PlayerForm. let player = { name: this.state.name }; this.props.submit(player); -> momento en el que se utiliza la funcion con el valor de la variable let.
