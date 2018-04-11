@@ -13,3 +13,16 @@
 
 6. export default (PlayerForm = () => ()) -> recive el return literalmente con los ()
   * export default (PlayerForm = () => {}) -> hay que escribir el return en la funcion.
+
+7. onSubmit={this.handleSubmit} activa la funcion.
+  * handleSubmit = event => {
+    event.preventDefault();
+    console.log('click');
+  } -> la cual recibe el evento submit y manipulamos el preventDefaul.
+
+8. constructor(props) {
+    super(props);
+    this.state = {
+      name: ""
+    };
+  }-> constructor con el name " vacio " 
