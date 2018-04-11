@@ -26,3 +26,6 @@
       name: ""
     };
   }-> constructor con el name " vacio " 
+
+9. onChange={this.handleChange} -> activa la function handleChange.
+  * this.setState({ name: event.target.value })-> la que se encarga de setear el name con el valor del metodo target.
