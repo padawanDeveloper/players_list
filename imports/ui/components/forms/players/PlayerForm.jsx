@@ -11,15 +11,19 @@ class PlayerForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.state.name);
+    console.log(this.state.name + "esto");
+    if(this.state.name ==""){
+      console.log("vacio total");
+    }else{
     let player = { name: this.state.name };
     this.props.submit(player);
     this.setState({ name: "" });
+    }
   };
 
   handleChange = event => {
     this.setState({ name: event.target.value });
-    console.log(event.target.value);
+    console.log(event.target.value + "esto otro");
   };
 
   render() {

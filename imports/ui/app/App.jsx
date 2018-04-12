@@ -7,8 +7,7 @@ import TogglebleForm from "../components/forms/players/ToggableForm";
 export default class App extends Component {
 	constructor(props) {
     super(props);
-    this.state = {
-      
+    this.state = { 
       playersFromState: [{ name: "Diego" }, { name: "Matias" }, { name: "Pele"}, , { name: "Maradona"}]
     };
   }
