@@ -45,6 +45,7 @@ class PlayersList extends Component {
           </li>
           {playersAsProps.map(player => (
             <EditablePlayerItem
+              key={player.id}
               player={player}
               editPlayer={this.handleEditPlayer}
             />

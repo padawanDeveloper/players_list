@@ -25,10 +25,14 @@ class PlayerForm extends Component {
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    return {
-      name: nextProps.player.name,
-      id: nextProps.player.id
-    };
+    if (nextProps.player){
+      return {
+        name: nextProps.player.name,
+        id: nextProps.player.id
+      };
+    }else {
+      return {};
+    }
   }
 
   componentDidMount() {
