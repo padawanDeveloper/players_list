@@ -5,20 +5,18 @@ class PlayerForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: ""
+      name: "",
+      id: Random.id(5)
     };
   }
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.state.name + "esto");
-    if(this.state.name ==""){
-      console.log("vacio total");
-    }else{
-    let player = { name: this.state.name };
-    this.props.submit(player);
-    this.setState({ name: "" });
-    }
+    let player = {
+      id: this.state.id,
+      name: this.state.name
+    };
+    this.props.player ? this.props.edit(player) : this.props.submit(player);
   };
 
   handleChange = event => {
@@ -26,26 +24,37 @@ class PlayerForm extends Component {
     console.log(event.target.value + "esto otro");
   };
 
-  render() {
+  static getDerivedStateFromProps(nextProps, prevState) {
+    return {
+      name: nextProps.player.name,
+      id: nextProps.player.id
+    };
+  }
 
-  let { name } = this.state;
+  componentDidMount() {
+     Materialize.updateTextFields();
+  }
+
+  render() {
+    const { player } = this.props;
+    const { name } = this.state;
     return (
       <div className="row">
         <form className="col s12" onSubmit={this.handleSubmit}>
           <div className="row">
             <div className="input-field col s12">
               <input
-                id="friend_name"
+                id="player_name"
                 type="text"
                 className="validate"
                 value={name}
                 onChange={this.handleChange}
               />
-              <label htmlFor="friend">Friend Name</label>
+              <label htmlFor="player">Player Name</label>
             </div>
             <div className="input-field col s12">
               <button type="submit" className="waves-effect waves-light btn">
-                Player
+                {player ? "Editar" : "Agregar"} Player
               </button>
             </div>
           </div>
@@ -56,7 +65,9 @@ class PlayerForm extends Component {
 }
 
 PlayerForm.propTypes = {
-  submit: PropTypes.func.isRequired
+  player: PropTypes.object,
+  submit: PropTypes.func,
+  edit: PropTypes.func
 }; 
 
 export default PlayerForm;  

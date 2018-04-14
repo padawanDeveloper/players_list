@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 
-import PlayerListItem from "./PlayerListItem";
+import EditablePlayerItem from "./EditablePlayerItem";
 import ToggableForm from "../../forms/players/ToggableForm";
 
 class PlayersList extends Component {
@@ -23,11 +23,17 @@ class PlayersList extends Component {
 
   handleSubmit = player => {
     this.props.submitPlayer(player);
+    console.log(this.props.playersAsProps.length);
     this.setState({
       visible: !this.state.visible,
       showButton: !this.state.showButton
     });
   };
+
+  handleEditPlayer = player => {
+    this.props.editPlayer(player);
+  };
+
   render() {
   	const { handleSubmit, playersAsProps } = this.props;
     const { visible, showButton } = this.state;
@@ -37,20 +43,26 @@ class PlayersList extends Component {
           <li className="collection-header">
             <h4>Lista de Amigos</h4>
           </li>
-          {playersAsProps.map(player => <PlayerListItem player={player} />)}
+          {playersAsProps.map(player => (
+            <EditablePlayerItem
+              player={player}
+              editPlayer={this.handleEditPlayer}
+            />
+          ))}
         </ul>
         <ToggableForm visible={visible} handleCreate={this.handleSubmit} />
-          {showButton && (
-            <a className="btn" onClick={this.toggleForm}>
-              Nuevo Amigo
-            </a>
-          )}
+        {showButton && (
+          <a className="btn" onClick={this.toggleForm}>
+            Nuevo Amigo
+          </a>
+        )}
       </div>
     );
   }
 }
 
 PlayersList.propTypes = {
+  editPlayer: PropTypes.func.isRequired,
   submitPlayer: PropTypes.func.isRequired,
   playersAsProps: PropTypes.array.isRequired
 };

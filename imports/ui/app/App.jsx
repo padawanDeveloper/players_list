@@ -8,20 +8,43 @@ export default class App extends Component {
 	constructor(props) {
     super(props);
     this.state = { 
-      playersFromState: [{ name: "Diego" }, { name: "Matias" }, { name: "Pele"}, , { name: "Maradona"}]
+      playersFromState: [
+      { id: Random.id(6), name: "Diego" }, 
+      { id: Random.id(6), name: "Matias" }, 
+      { id: Random.id(6), name: "Pele"}, , 
+      { id: Random.id(6), name: "Maradona"}]
     };
   }
 
   addPlayer = player => {
     let { playersFromState, formIsVisible } = this.state;
-    this.setState({ playersFromState: playersFromState.concat(player) });
+    this.setState({ 
+      playersFromState: playersFromState.concat(player) 
+    });
     console.log('click add');
   };
 
+  editPlayer = player => {
+    let players = this.state.playersFromState;
+    this.setState({
+      playersFromState: players.map(f => {
+        if (f.id == player.id) {
+          return Object.assign({}, player);
+        } else {
+          return f;
+        }
+      })
+    });
+  };
+
   render() {
-  	let { playersFromState, formIsVisible } = this.state;
+  	let { buttonIsVisible, playersFromState, formIsVisible } = this.state;
     return ( 	
-        <PlayersList playersAsProps={playersFromState} submitPlayer={this.addPlayer}/>
+        <PlayersList 
+        playersAsProps={playersFromState} 
+        submitPlayer={this.addPlayer}
+        editPlayer={this.editPlayer}
+        />
     );
   }
 }
