@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 
 import PlayerItem from "./PlayerItem";
-import PlayerForm from "../../../components/forms/palyers/PlayerForm";
+import PlayerForm from "../../../components/forms/players/PlayerForm";
 
 class EditablePlayerItem extends Component {
   constructor(props) {
