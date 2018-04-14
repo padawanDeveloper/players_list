@@ -19,18 +19,27 @@ class EditablePlayerItem extends Component {
     this.toggleForm();
   };
 
+  deletePlayer = id => {
+    this.props.onDeletePlayer(id);
+  };
+
   render() {
     const { showForm } = this.state;
     const { player } = this.props;
     return showForm ? (
       <PlayerForm player={player} edit={this.handleEdit} />
     ) : (
-      <PlayerItem player={player} handleToggleForm={this.toggleForm} />
+      <PlayerItem
+        player={player}
+        handleToggleForm={this.toggleForm}
+        onDeletePlayerClick={this.deletePlayer}
+      />
     );
   }
 }
 
 EditablePlayerItem.propTypes = {
+	onDeletePlayer: PropTypes.func.isRequired,
   editPlayer: PropTypes.func,
   player: PropTypes.object
 };

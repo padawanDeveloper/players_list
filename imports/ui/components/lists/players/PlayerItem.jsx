@@ -1,7 +1,9 @@
 import React from "react";
 import { PropTypes } from "prop-types";
 
-const PlayerItem = ({ player, handleToggleForm }) => (
+
+
+const PlayerItem = ({ player, handleToggleForm, onDeletePlayerClick }) => (
   <li className="collection-item">
     <div>
       Name: {player.name}
@@ -9,12 +11,21 @@ const PlayerItem = ({ player, handleToggleForm }) => (
         <i className="material-icons" onClick={handleToggleForm}>
           edit
         </i>
+        <i
+          className="material-icons red-text"
+          onClick={event => {
+            onDeletePlayerClick(player.id);
+          }}
+        >
+          delete
+        </i>
       </a>
     </div>
   </li>
 );
 
 PlayerItem.propTypes = {
+  onDeletePlayerClick: PropTypes.func,
   player: PropTypes.object,
   handleToggleForm: PropTypes.func
 };

@@ -35,7 +35,7 @@ class PlayersList extends Component {
   };
 
   render() {
-  	const { handleSubmit, playersAsProps } = this.props;
+  	const { handleDeletePlayer, handleSubmit, playersAsProps } = this.props;
     const { visible, showButton } = this.state;
     return (
     	<div>
@@ -48,6 +48,7 @@ class PlayersList extends Component {
               key={player.id}
               player={player}
               editPlayer={this.handleEditPlayer}
+              onDeletePlayer={handleDeletePlayer}
             />
           ))}
         </ul>
@@ -63,6 +64,7 @@ class PlayersList extends Component {
 }
 
 PlayersList.propTypes = {
+  handleDeletePlayer: PropTypes.func.isRequired,
   editPlayer: PropTypes.func.isRequired,
   submitPlayer: PropTypes.func.isRequired,
   playersAsProps: PropTypes.array.isRequired

@@ -37,6 +37,12 @@ export default class App extends Component {
     });
   };
 
+  deletePlayer = id => {
+    this.setState({
+      flayersFromState: this.state.playersFromState.filter(f => f.id !== id)
+    });
+  };
+
   render() {
   	let { buttonIsVisible, playersFromState, formIsVisible } = this.state;
     return ( 	
@@ -44,6 +50,7 @@ export default class App extends Component {
         playersAsProps={playersFromState} 
         submitPlayer={this.addPlayer}
         editPlayer={this.editPlayer}
+        handleDeletePlayer={this.deletePlayer}
         />
     );
   }
